@@ -1,9 +1,9 @@
-const Jimp = require('jimp'); //jimp module (https://www.npmjs.com/package/jimp)
+const Jimp = require('jimp'); // jimp module (https://www.npmjs.com/package/jimp)
 const path = require('path'); // default node.js module 
 
 // Get array of image urls
 var urlImgs = [
-    "https://tests.net/assets/uploads/brands/test.png",
+    "https://tests.net/{url_to_image}/test.png",
 ];
 
 (async () => {
@@ -21,8 +21,8 @@ var urlImgs = [
             })
             .then(image => {
                 return image
-                    .resize(220, Jimp.AUTO)
-                    .write(`./images/${curImgName}.${image.getExtension()}`);
+                    .resize(220, Jimp.AUTO) // set width and height that you need for image to be parsed!
+                    .write(`./images/${curImgName}.${image.getExtension()}`);  // create path where the parsed images should be put!
             }).catch(error => {
             console.log(error);
         });
